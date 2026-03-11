@@ -1,0 +1,83 @@
+/**
+ * Communes de Seine-et-Marne (77) dont le nom commence par S.
+ */
+
+function slugFromName(name) {
+  return "vtc-" + name.toLowerCase()
+    .normalize("NFD").replace(/\p{Diacritic}/gu, "")
+    .replace(/\s+/g, "-")
+    .replace(/'/g, "-")
+    .replace(/–/g, "-");
+}
+
+export const VTC_SEINE_ET_MARNE_VILLES_S = [
+  { name: "Saâcy-sur-Marne", codeInsee: "77397", cp: "77730", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 1869, lat: 48.96167, lng: 3.20972, superficie: 13.57 },
+  { name: "Sablonnières", codeInsee: "77398", cp: "77510", canton: "Coulommiers", interco: "CC des Deux Morin", population: 768, lat: 48.87556, lng: 3.29639, superficie: 13.91 },
+  { name: "Saint-Augustin", codeInsee: "77400", cp: "77515", canton: "Coulommiers", interco: "CA Coulommiers Pays de Brie", population: 1865, lat: 48.78528, lng: 3.03083, superficie: 10.30 },
+  { name: "Saint-Barthélemy", codeInsee: "77402", cp: "77320", canton: "Coulommiers", interco: "CC des Deux Morin", population: 340, lat: 48.81722, lng: 3.36139, superficie: 14.98 },
+  { name: "Saint-Brice", codeInsee: "77403", cp: "77160", canton: "Provins", interco: "CC du Provinois", population: 812, lat: 48.56778, lng: 3.32806, superficie: 11.63 },
+  { name: "Saint-Cyr-sur-Morin", codeInsee: "77405", cp: "77750", canton: "Coulommiers", interco: "CC des Deux Morin", population: 1943, lat: 48.90667, lng: 3.18250, superficie: 19.09 },
+  { name: "Saint-Denis-lès-Rebais", codeInsee: "77406", cp: "77510", canton: "Coulommiers", interco: "CC des Deux Morin", population: 989, lat: 48.83639, lng: 3.21083, superficie: 15.12 },
+  { name: "Saint-Fargeau-Ponthierry", codeInsee: "77407", cp: "77310", canton: "Saint-Fargeau-Ponthierry", interco: "CA Melun Val de Seine", population: 15117, lat: 48.56528, lng: 2.53361, superficie: 16.62 },
+  { name: "Saint-Fiacre", codeInsee: "77408", cp: "77470", canton: "Serris", interco: "CA du Pays de Meaux", population: 490, lat: 48.92278, lng: 2.95472, superficie: 2.80 },
+  { name: "Saint-Germain-Laval", codeInsee: "77409", cp: "77130", canton: "Montereau-Fault-Yonne", interco: "CC Pays de Montereau", population: 2887, lat: 48.40111, lng: 2.99944, superficie: 8.80 },
+  { name: "Saint-Germain-Laxis", codeInsee: "77410", cp: "77950", canton: "Melun", interco: "CA Melun Val de Seine", population: 737, lat: 48.58417, lng: 2.71056, superficie: 7.29 },
+  { name: "Saint-Germain-sous-Doue", codeInsee: "77411", cp: "77169", canton: "Coulommiers", interco: "CC des Deux Morin", population: 553, lat: 48.85278, lng: 3.14444, superficie: 10.12 },
+  { name: "Saint-Germain-sur-École", codeInsee: "77412", cp: "77930", canton: "Fontainebleau", interco: "CA du Pays de Fontainebleau", population: 371, lat: 48.47556, lng: 2.50917, superficie: 2.52 },
+  { name: "Saint-Germain-sur-Morin", codeInsee: "77413", cp: "77860", canton: "Serris", interco: "CA Val d'Europe Agglomération", population: 3892, lat: 48.88222, lng: 2.85083, superficie: 4.79 },
+  { name: "Saint-Hilliers", codeInsee: "77414", cp: "77160", canton: "Provins", interco: "CC du Provinois", population: 479, lat: 48.62139, lng: 3.25889, superficie: 19.13 },
+  { name: "Saint-Jean-les-Deux-Jumeaux", codeInsee: "77415", cp: "77660", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 1294, lat: 48.95139, lng: 3.02000, superficie: 13.39 },
+  { name: "Saint-Just-en-Brie", codeInsee: "77416", cp: "77370", canton: "Nangis", interco: "CC Brie Nangissienne", population: 264, lat: 48.59972, lng: 3.10472, superficie: 7.42 },
+  { name: "Saint-Léger", codeInsee: "77417", cp: "77510", canton: "Coulommiers", interco: "CC des Deux Morin", population: 244, lat: 48.85306, lng: 3.27611, superficie: 9.75 },
+  { name: "Saint-Loup-de-Naud", codeInsee: "77418", cp: "77650", canton: "Provins", interco: "CC du Provinois", population: 859, lat: 48.53611, lng: 3.21083, superficie: 10.97 },
+  { name: "Saint-Mammès", codeInsee: "77419", cp: "77670", canton: "Montereau-Fault-Yonne", interco: "CC Moret Seine et Loing", population: 3232, lat: 48.38667, lng: 2.81139, superficie: 2.25 },
+  { name: "Saint-Mard", codeInsee: "77420", cp: "77230", canton: "Mitry-Mory", interco: "CA Roissy Pays de France", population: 3853, lat: 49.03695, lng: 2.69639, superficie: 6.24 },
+  { name: "Saint-Mars-Vieux-Maisons", codeInsee: "77421", cp: "77320", canton: "Coulommiers", interco: "CC des Deux Morin", population: 248, lat: 48.74250, lng: 3.32111, superficie: 19.11 },
+  { name: "Saint-Martin-des-Champs", codeInsee: "77423", cp: "77320", canton: "Coulommiers", interco: "CC des Deux Morin", population: 660, lat: 48.77861, lng: 3.33667, superficie: 10.36 },
+  { name: "Saint-Martin-du-Boschet", codeInsee: "77424", cp: "77320", canton: "Provins", interco: "CC du Provinois", population: 264, lat: 48.73694, lng: 3.42806, superficie: 17.10 },
+  { name: "Saint-Martin-en-Bière", codeInsee: "77425", cp: "77630", canton: "Fontainebleau", interco: "CA du Pays de Fontainebleau", population: 746, lat: 48.43806, lng: 2.56806, superficie: 7.96 },
+  { name: "Saint-Méry", codeInsee: "77426", cp: "77720", canton: "Nangis", interco: "CC Brie des Rivières et Châteaux", population: 333, lat: 48.57778, lng: 2.82750, superficie: 9.96 },
+  { name: "Saint-Mesmes", codeInsee: "77427", cp: "77410", canton: "Claye-Souilly", interco: "CC Plaines et Monts de France", population: 596, lat: 48.98333, lng: 2.69417, superficie: 7.70 },
+  { name: "Saint-Ouen-en-Brie", codeInsee: "77428", cp: "77720", canton: "Nangis", interco: "CC Brie Nangissienne", population: 833, lat: 48.55750, lng: 2.91833, superficie: 5.71 },
+  { name: "Saint-Ouen-sur-Morin", codeInsee: "77429", cp: "77750", canton: "Coulommiers", interco: "CC des Deux Morin", population: 526, lat: 48.90556, lng: 3.19222, superficie: 3.76 },
+  { name: "Saint-Pathus", codeInsee: "77430", cp: "77178", canton: "Mitry-Mory", interco: "CC Plaines et Monts de France", population: 6478, lat: 49.06972, lng: 2.80028, superficie: 5.36 },
+  { name: "Saint-Pierre-lès-Nemours", codeInsee: "77431", cp: "77140", canton: "Nemours", interco: "CC Pays de Nemours", population: 5424, lat: 48.26639, lng: 2.68028, superficie: 21.86 },
+  { name: "Saint-Rémy-la-Vanne", codeInsee: "77432", cp: "77320", canton: "Coulommiers", interco: "CC des Deux Morin", population: 976, lat: 48.79278, lng: 3.23333, superficie: 15.10 },
+  { name: "Saint-Sauveur-lès-Bray", codeInsee: "77434", cp: "77480", canton: "Provins", interco: "CC Bassée-Montois", population: 355, lat: 48.43778, lng: 3.20889, superficie: 6.35 },
+  { name: "Saint-Sauveur-sur-École", codeInsee: "77435", cp: "77930", canton: "Fontainebleau", interco: "CA du Pays de Fontainebleau", population: 1120, lat: 48.49694, lng: 2.54944, superficie: 7.33 },
+  { name: "Saint-Siméon", codeInsee: "77436", cp: "77169", canton: "Coulommiers", interco: "CC des Deux Morin", population: 895, lat: 48.79833, lng: 3.20333, superficie: 12.98 },
+  { name: "Saint-Soupplets", codeInsee: "77437", cp: "77165", canton: "Claye-Souilly", interco: "CA du Pays de Meaux", population: 3586, lat: 49.03889, lng: 2.80583, superficie: 13.77 },
+  { name: "Saint-Thibault-des-Vignes", codeInsee: "77438", cp: "77400", canton: "Lagny-sur-Marne", interco: "CA Marne et Gondoire", population: 6793, lat: 48.86917, lng: 2.68861, superficie: 4.62 },
+  { name: "Sainte-Aulde", codeInsee: "77401", cp: "77260", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 692, lat: 48.99528, lng: 3.19889, superficie: 8.59 },
+  { name: "Sainte-Colombe", codeInsee: "77404", cp: "77650", canton: "Provins", interco: "CC du Provinois", population: 1778, lat: 48.53639, lng: 3.26528, superficie: 8.08 },
+  { name: "Salins", codeInsee: "77439", cp: "77148", canton: "Montereau-Fault-Yonne", interco: "CC Pays de Montereau", population: 1171, lat: 48.42056, lng: 3.02194, superficie: 10.51 },
+  { name: "Sammeron", codeInsee: "77440", cp: "77260", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 1160, lat: 48.94722, lng: 3.08694, superficie: 6.20 },
+  { name: "Samois-sur-Seine", codeInsee: "77441", cp: "77920", canton: "Fontainebleau", interco: "CA du Pays de Fontainebleau", population: 2066, lat: 48.45222, lng: 2.75000, superficie: 5.71 },
+  { name: "Samoreau", codeInsee: "77442", cp: "77210", canton: "Fontainebleau", interco: "CA du Pays de Fontainebleau", population: 2409, lat: 48.42389, lng: 2.75139, superficie: 5.64 },
+  { name: "Sancy", codeInsee: "77443", cp: "77580", canton: "Serris", interco: "CA Coulommiers Pays de Brie", population: 390, lat: 48.88556, lng: 2.95833, superficie: 5.38 },
+  { name: "Sancy-lès-Provins", codeInsee: "77444", cp: "77320", canton: "Provins", interco: "CC du Provinois", population: 338, lat: 48.69639, lng: 3.39444, superficie: 18.27 },
+  { name: "Savigny-le-Temple", codeInsee: "77445", cp: "77176", canton: "Savigny-le-Temple", interco: "CA Grand Paris Sud Seine Essonne Sénart", population: 30630, lat: 48.57611, lng: 2.58389, superficie: 12.17 },
+  { name: "Savins", codeInsee: "77446", cp: "77650", canton: "Provins", interco: "CC Bassée-Montois", population: 604, lat: 48.51111, lng: 3.20083, superficie: 6.68 },
+  { name: "Seine-Port", codeInsee: "77447", cp: "77240", canton: "Saint-Fargeau-Ponthierry", interco: "CA Melun Val de Seine", population: 1824, lat: 48.55778, lng: 2.54806, superficie: 8.59 },
+  { name: "Sept-Sorts", codeInsee: "77448", cp: "77260", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 597, lat: 48.93750, lng: 3.10389, superficie: 3.08 },
+  { name: "Serris", codeInsee: "77449", cp: "77700", canton: "Serris", interco: "CA Val d'Europe Agglomération", population: 9988, lat: 48.84555, lng: 2.78778, superficie: 5.70 },
+  { name: "Servon", codeInsee: "77450", cp: "77170", canton: "Ozoir-la-Ferrière", interco: "CC l'Orée de la Brie", population: 3430, lat: 48.71750, lng: 2.58778, superficie: 7.39 },
+  { name: "Signy-Signets", codeInsee: "77451", cp: "77640", canton: "La Ferté-sous-Jouarre", interco: "CA Coulommiers Pays de Brie", population: 620, lat: 48.92722, lng: 3.06917, superficie: 13.50 },
+  { name: "Sigy", codeInsee: "77452", cp: "77520", canton: "Provins", interco: "CC Bassée-Montois", population: 70, lat: 48.47778, lng: 3.18250, superficie: 4.77 },
+  { name: "Sivry-Courtry", codeInsee: "77453", cp: "77115", canton: "Nangis", interco: "CC Brie des Rivières et Châteaux", population: 1108, lat: 48.52861, lng: 2.75583, superficie: 22.47 },
+  { name: "Sognolles-en-Montois", codeInsee: "77454", cp: "77520", canton: "Provins", interco: "CC Bassée-Montois", population: 365, lat: 48.51028, lng: 3.16861, superficie: 10.32 },
+  { name: "Soignolles-en-Brie", codeInsee: "77455", cp: "77111", canton: "Fontenay-Trésigny", interco: "CC Brie des Rivières et Châteaux", population: 2024, lat: 48.65306, lng: 2.69861, superficie: 10.83 },
+  { name: "Soisy-Bouy", codeInsee: "77456", cp: "77650", canton: "Provins", interco: "CC du Provinois", population: 844, lat: 48.51111, lng: 3.29556, superficie: 11.76 },
+  { name: "Solers", codeInsee: "77457", cp: "77111", canton: "Fontenay-Trésigny", interco: "CC Brie des Rivières et Châteaux", population: 1284, lat: 48.65861, lng: 2.71806, superficie: 6.24 },
+  { name: "Souppes-sur-Loing", codeInsee: "77458", cp: "77460", canton: "Nemours", interco: "CC Gâtinais Val de Loing", population: 4974, lat: 48.18583, lng: 2.73278, superficie: 27.60 },
+  { name: "Sourdun", codeInsee: "77459", cp: "77171", canton: "Provins", interco: "CC du Provinois", population: 1515, lat: 48.53695, lng: 3.34833, superficie: 23.47 },
+].map((c) => ({
+  ...c,
+  slug: slugFromName(c.name),
+  district: c.canton,
+  quartiers: ["Centre du village", "Environs", c.canton],
+  monuments: ["église", "mairie", "centre du village"],
+  gares: [],
+  rues: ["centre du village", "axes principaux"],
+  hotels: ["établissements du secteur"],
+}));

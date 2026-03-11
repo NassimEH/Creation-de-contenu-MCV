@@ -1,0 +1,32 @@
+{
+  "name": "mcv-website",
+  "version": "1.0.0",
+  "description": "Scripts pour publier du contenu sur le site WordPress MCV",
+  "type": "module",
+  "scripts": {
+    "test-page": "node scripts/create-test-page.js",
+    "publish-vtc-pages": "node scripts/publish-vtc-paris-pages.js",
+    "update-vtc-pages": "node scripts/update-vtc-paris-pages.js",
+    "publish-vtc-communes": "node scripts/publish-vtc-communes-pages.js",
+    "update-vtc-communes": "node scripts/update-vtc-communes-pages.js",
+    "publish-vtc-yvelines": "node scripts/publish-vtc-yvelines-pages.js",
+    "update-vtc-yvelines": "node scripts/update-vtc-yvelines-pages.js",
+    "publish-vtc-essonne": "node scripts/publish-vtc-essonne-pages.js",
+    "update-vtc-essonne": "node scripts/update-vtc-essonne-pages.js",
+    "publish-vtc-haut-de-seine": "node scripts/publish-vtc-haut-de-seine-pages.js",
+    "update-vtc-haut-de-seine": "node scripts/update-vtc-haut-de-seine-pages.js",
+    "publish-vtc-seine-saint-denis": "node scripts/publish-vtc-seine-saint-denis-pages.js",
+    "update-vtc-seine-saint-denis": "node scripts/update-vtc-seine-saint-denis-pages.js",
+    "publish-vtc-val-de-marne": "node scripts/publish-vtc-val-de-marne-pages.js",
+    "update-vtc-val-de-marne": "node scripts/update-vtc-val-de-marne-pages.js",
+    "publish-vtc-val-doise": "node scripts/publish-vtc-val-doise-pages.js",
+    "update-vtc-val-doise": "node scripts/update-vtc-val-doise-pages.js",
+    "publish-vtc-gares-paris": "node scripts/publish-vtc-gares-paris-pages.js",
+    "update-vtc-gares-paris": "node scripts/update-vtc-gares-paris-pages.js",
+    "update-nos-secteurs": "node scripts/update-nos-secteurs-page.js",
+    "update-app-mobile": "node scripts/update-app-mobile-page.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
