@@ -1,6 +1,6 @@
 ---
 name: mcv-website-rules
-description: Règles et conventions du projet MCVWebsite (publication SEO VTC sur WordPress). À appliquer systématiquement pour tout travail sur ce repo : contenu, Yoast, API WordPress, scripts publish/update. Contenu 1200-1800 mots, densité 1-1.5%, méta 140-160, lisibilité, SEO local.
+description: Règles et conventions du projet MCVWebsite (publication SEO VTC sur WordPress). À appliquer systématiquement : contenu 2500 mots min, titre/H1 "Chauffeur privé VTC [ville]", H2 "Alternative taxi", usage du mot taxi, Yoast, API WordPress, scripts publish/update.
 ---
 
 # Règles du projet MCVWebsite
@@ -18,83 +18,78 @@ description: Règles et conventions du projet MCVWebsite (publication SEO VTC su
 - **Identifiants** : dans `.env` (`WORDPRESS_URL`, `WORDPRESS_USER`, `WORDPRESS_APP_PASSWORD`)
 - **Service** : chauffeur privé 24h/24 et 7j/7, déplacements urbains, transferts aéroports/gares, trajets longue distance.
 
+## Longueur du contenu
+
+- **Minimum 2500 mots** par page (communes, Paris, gares, app mobile, nos secteurs). Rallonger de façon pertinente : sections supplémentaires (VTC vs taxi, conseils réservation, couverture zone, quand réserver, FAQ étoffée), paragraphes développés, tout en restant utile pour le SEO et l’utilisateur.
+
+## Titres et H1
+
+- **Titre SEO** : commence par l’expression clé. Forme : **Chauffeur privé VTC [Ville]** (ex. « Chauffeur privé VTC Paris », « Chauffeur privé VTC Évry-Courcouronnes »). Ne pas utiliser uniquement « VTC [Ville] ».
+- **H1** : **Chauffeur privé VTC [Ville]** (même forme que le titre SEO). Pas de « Chauffeur privé 24h/24 » seul dans le titre.
+
+## H2 « Alternative taxi »
+
+- **Sur toutes les pages** : inclure un **H2** de type **« Alternative taxi à [ville] »** (ou « Alternative taxi à [nom de la gare] » pour les pages gares). Un paragraphe au minimum qui présente le service comme une alternative au taxi (réservation à l’avance, tarif connu, confort chauffeur privé / VTC).
+
+## Usage du mot « taxi »
+
+- Utiliser le mot **taxi** dans les textes en plus de **chauffeur privé** et **VTC**, de façon naturelle (ex. « en complément d’un taxi », « alternative au taxi », « plutôt qu’un taxi »). Le mot taxi est important pour le référencement ; ne pas sur-optimiser.
+
 ## Zones et pages
 
-- **Paris et arrondissements** : première page VTC Paris, puis Paris 1er à 20e (Louvre, Bourse, Temple, etc.). Slugs : `vtc-paris`, `vtc-paris-1`, … `vtc-paris-20`. Données dans `vtc-paris-zones.js`, contenu dans `generate-vtc-content.js`. Publication : `publish-vtc-paris-pages.js`, mise à jour : `update-vtc-paris-pages.js` (`npm run publish-vtc-pages`, `npm run update-vtc-pages`).
-- **Communes Seine-et-Marne (77 – toutes)** : pages VTC par commune. Données dans `vtc-seine-et-marne-villes-a.js` à `vtc-seine-et-marne-villes-y.js` (A à Y, tout le 77), contenu dans `generate-vtc-communes-content.js`. Publication : `publish-vtc-communes-pages.js`, mise à jour : `update-vtc-communes-pages.js` (`npm run publish-vtc-communes`, `npm run update-vtc-communes`). **Mêmes règles SEO** que les pages Paris (une image, méta 140–156, expression clé dans H2/H3, **langage naturel et fluide**, **mots de transition ~25–30 %**). **Publier toujours directement** les nouvelles villes après ajout dans les fichiers de données.
-- **Communes Yvelines (78)** : pages VTC par commune (villes en A, B, …). Données dans `vtc-yvelines-villes-a.js`, `vtc-yvelines-villes-b.js`, etc. Contenu dans `generate-vtc-yvelines-content.js` (références « Yvelines », « 78 », gares selon canton 78). Publication : `publish-vtc-yvelines-pages.js`, mise à jour : `update-vtc-yvelines-pages.js` (`npm run publish-vtc-yvelines`, `npm run update-vtc-yvelines`). Mêmes règles SEO que 77.
-- **Communes Essonne (91)** : pages VTC par commune (villes en A, B, …). Données dans `vtc-essonne-villes-a.js`, `vtc-essonne-villes-b.js`, etc. Contenu dans `generate-vtc-essonne-content.js` (références « Essonne », « 91 », gares selon canton 91 : Étampes, Dourdan, Arpajon, Mennecy, Gif, etc.). Publication : `publish-vtc-essonne-pages.js`, mise à jour : `update-vtc-essonne-pages.js` (`npm run publish-vtc-essonne`, `npm run update-vtc-essonne`). Mêmes règles SEO que 77/78.
+- **Paris et arrondissements** : slugs `vtc-paris`, `vtc-paris-1` … `vtc-paris-20`. Données dans `vtc-paris-zones.js`, contenu dans `generate-vtc-content.js`. La **page Paris principale** (`vtc-paris`) est enrichie à **3000+ mots** (sections dédiées : capitale, 7 gares, CDG/Orly, quartiers d'affaires/tourisme, VTC vs taxi) pour un SEO ultra compétitif. Publication : `publish-vtc-paris-pages.js` (crée uniquement les pages manquantes), mise à jour : `update-vtc-paris-pages.js`.
+- **Communes par département** : 77 (Seine-et-Marne), 78 (Yvelines), 91 (Essonne), 92 (Hauts-de-Seine), 93 (Seine-Saint-Denis), 94 (Val-de-Marne), 95 (Val-d'Oise). Chaque département a ses fichiers de données `vtc-*-villes-*.js` et son générateur `generate-vtc-*-content.js`, plus scripts publish/update dédiés.
+- **Gares Paris** : 7 gares SNCF (Nord, Est, Saint-Lazare, Lyon, Austerlitz, Montparnasse, Bercy). Données dans `vtc-gares-paris-data.js`, contenu dans `generate-vtc-gares-paris-content.js`.
+- **Métropoles** : Lyon, Marseille, Toulouse, Bordeaux, Lille, Nice, Nantes, Strasbourg, Montpellier, Rennes, Grenoble. Données dans `vtc-metropoles-data.js`, contenu dans `generate-vtc-metropoles-content.js` (2500+ mots, SEO, alternative taxi). Slugs : `vtc-lyon`, `vtc-marseille`, etc. Publication : `publish-vtc-metropoles-pages.js`, mise à jour : `update-vtc-metropoles-pages.js`.
+- **Pages spéciales** : « Nos secteurs » (parente), « App mobile » (slug `application-vtc-mobile`). Contenu dans `generate-nos-secteurs-page-content.js` et `generate-app-mobile-page-content.js`.
 - Chaque page **unique**, références locales (quartiers/canton, monuments, secteur).
-
-## Titres (pas de "Chauffeur privé 24h/24")
-
-- **Titre SEO** : commence par l’expression clé, **50–60 caractères max**. Forme : **VTC [Ville]** uniquement (ex. « VTC Paris », « VTC Paris 15 »). Ne pas ajouter « Chauffeur privé disponible 24h/24 ».
-- **H1** : **VTC [Ville]** uniquement (ex. `<h1>VTC Paris</h1>`, `<h1>VTC Paris 10</h1>`).
 
 ## Expression clé et densité
 
-- **Mot-clé principal** : « VTC [Ville] » (ex. VTC Paris, VTC Paris 10).
-- **Densité** : entre **1 % et 1,5 %** du contenu total. Ne pas sur-optimiser : si Yoast indique un maximum (ex. 41 occurrences pour la longueur du texte), rester en dessous.
-- **Zones obligatoires** : titre SEO, H1, introduction, au moins un sous-titre H2 ou H3, conclusion, méta description, slug, alt des images (si images).
+- **Mot-clé principal** : **Chauffeur privé VTC [Ville]** (ou équivalent pour gares / app mobile).
+- **Densité** : entre **1 % et 1,5 %** du contenu total. Ne pas sur-optimiser.
+- **Zones obligatoires** : titre SEO, H1, introduction, au moins un sous-titre H2 ou H3, conclusion, méta description, slug, alt des images.
 
 ## Méta description
 
-- **Longueur** : **140–156 caractères** pour une visibilité entière dans les SERP (Yoast : au-delà de 156, la méta peut être tronquée).
-- **Contenu** : inclure l’**expression clé principale** au début et inciter au clic. Toujours renseigner une méta.
+- **Longueur** : **140–156 caractères** pour une visibilité entière dans les SERP.
+- **Contenu** : inclure l’**expression clé principale** au début et inciter au clic.
 
 ## Sous-titres et lisibilité
 
-- **Répartition** : aucune section ne doit dépasser **~300 mots** sans être séparée par un sous-titre. Ajouter des H3 (ou H4) pour découper les longs blocs.
-- **Expression clé dans H2/H3** : utiliser l’**expression clé ou des synonymes** (chauffeur privé, service VTC) dans **plusieurs** sous-titres H2 et H3 pour le SEO (ex. « Service VTC [Ville] », « Pourquoi choisir notre VTC [Ville] », « Trajets VTC [Ville] les plus demandés », « FAQ VTC [Ville] »). Éviter à la fois trop peu (Yoast : « utilisez davantage ») et plus de 75 % (sur-optimisation).
-- Structure claire : H1 → H2 → H3, paragraphes courts, listes à puces, espaces entre blocs.
+- **Répartition** : aucune section ne doit dépasser **~300 mots** sans être séparée par un sous-titre. Utiliser H2/H3 (et H4 si besoin).
+- **Expression clé dans H2/H3** : l’utiliser dans plusieurs sous-titres, mais **pas plus de 75 %** des H2/H3 (éviter la sur-optimisation Yoast). Varier avec « Service », « Alternative taxi », « Pourquoi nous choisir », « Trajets », « FAQ », etc.
+- Structure claire : H1 → H2 → H3, paragraphes courts, listes à puces.
 
 ## Mots de transition
 
-- **Objectif** : au moins **~25–30 %** des phrases contiennent un mot de transition (Yoast recommande plus que 11,7 %). Utiliser : Ainsi, Par ailleurs, En effet, De plus, En outre, Toutefois, En revanche, Par conséquent, D’ailleurs, Notamment, En conclusion, De même, Pour cela, Finalement, D’autre part, etc.
+- **Objectif** : au moins **~25–30 %** des phrases contiennent un mot de transition. Utiliser : Ainsi, Par ailleurs, En effet, De plus, En outre, Toutefois, Par conséquent, D’ailleurs, Notamment, etc.
 
 ## Langage naturel et fluidité
 
-- **Éviter le ton robotique** : ne pas enchaîner des connecteurs logiques en début de phrase (ex. « En revanche… Par conséquent… Finalement »). Préférer des tournures directes et humaines tout en restant professionnelles.
-- **Exemples** : « Côté tarif, pas de mauvaise surprise » ; « Vous réservez en ligne en quelques clics, recevez une confirmation immédiate » ; « Nous couvrons aussi les communes voisines ». Connecteurs intégrés au fil du texte (notamment, toutefois, ainsi) plutôt qu’accumulés en tête de phrase. Conserver le même volume d’information et une densité de mots de liaison suffisante pour Yoast, tout en rendant le texte **fluide et agréable à lire**.
+- **Éviter le ton robotique** : tournures directes et humaines, professionnelles. Connecteurs intégrés au fil du texte plutôt qu’accumulés en tête de phrase.
 
-## Structure type des pages
+## Structure type des pages (2500 mots min)
 
-- **Intro** : 150–200 mots, expression clé dans les deux premières phrases.
-- **H2** : Service (transport chauffeur, ponctualité, confort) ; Pourquoi nous choisir (atouts) ; Trajets les plus demandés ; Pour tous vos déplacements ; Comment réserver ; FAQ.
-- **H3** : sous-sections (ex. Ponctualité et zone, Réservation et tarifs, CDG, Orly, Gare du Nord, Types de missions, Étapes, Tarifs et réservation, etc.).
-- **FAQ** : questions utiles (prix, réservation à l’avance, 24h/24, transferts aéroports, véhicules). Plusieurs Q/R.
+- **Intro** : expression clé dans les deux premières phrases, rappel du secteur (ville, canton, code postal si commune).
+- **H2** : Alternative taxi à [ville] ; Service ; Pourquoi nous choisir ; Trajets les plus demandés ; (optionnel) VTC et taxi : quelle différence ; Conseils pour réserver ; Couverture / secteur d’intervention ; Pour tous vos déplacements ; Comment réserver ; FAQ ; Conclusion.
+- **H3** : sous-sections (Ponctualité, Réservation et tarifs, CDG, Orly, Gare du Nord, Types de missions, Étapes, etc.).
+- **FAQ** : plusieurs questions utiles (prix, réservation à l’avance, 24h/24, transferts aéroports, véhicules, annulation, etc.).
 - **Conclusion** : rappel du service, appel à l’action.
-- **Liens internes** : VTC Paris, VTC aéroport CDG/Orly, VTC Gare du Nord, autres arrondissements.
-- **Liens externes** : au moins 1–2 vers sites d’autorité (ville de Paris, aéroports).
-- **Mots-clés secondaires** : chauffeur privé, transport privé, service VTC, réservation VTC, transfert aéroport/gare, véhicule avec chauffeur, transport premium, chauffeur professionnel — intégrés naturellement.
-- **SEO local** : quartiers, rues, monuments, musées, parcs, hôtels, gares, lieux touristiques, distances aéroports, temps de trajet, axes routiers. **Code postal** : rappeler le code postal de la commune dans l’intro, dans la section Service et dans la méta description (ex. « à [Ville] (77xxx) » / « (78xxx) ») pour le référencement local ; **ne pas** le mettre dans le titre SEO ni dans le H1. **Pages communes 77** : personnaliser l’intro (pas de listes génériques « Centre du village, Environs, église, mairie »). Gares mentionnées selon canton/interco (ex. Meaux → « gares de Meaux ou de Paris »). Zone de prise en charge selon la commune et la population (ex. « du centre de X ou des communes voisines » pour les plus grosses, « de X ou des environs du canton de Y » pour les plus petites).
-- **CTAs** : Réservez votre VTC, Contactez votre chauffeur, Planifiez votre transfert, Profitez d’un trajet confortable.
-
-## Longueur et mise en forme
-
-- **1200–1800 mots minimum** par page. Français naturel, professionnel, rassurant.
-- Paragraphes courts, listes à puces, titres et sous-titres clairs, sections distinctes. Pas de gros blocs de texte.
+- **Liens internes** : VTC Paris, aéroports CDG/Orly, Gare du Nord, autres communes/secteurs.
+- **Liens externes** : au moins 1–2 vers sites d’autorité (ville de Paris, aéroports, SNCF selon le cas).
+- **SEO local** : **Code postal** dans l’intro, section Service et méta description (ex. « à [Ville] (91xxx) ») ; **ne pas** le mettre dans le titre SEO ni dans le H1. Quartiers, cantons, gares selon zone. Gares mentionnées selon canton/interco (ex. « gares d’Étampes ou de Paris »).
 
 ## Images
 
-- **Une seule image par page**, déjà hébergée sur le serveur WordPress.
-- **URL fixe** : `https://monchauffeurvipv3.netopsia.eu/wp-content/uploads/2026/02/vtc-essonne.webp`
-- **Bonnes pratiques** :
-  - **alt** : expression clé + courte description (ex. « {expression clé} – Chauffeur privé et véhicule confortable »), avec `escapeHtml()` sur la clé.
-  - **title** : cohérent avec l’alt (ex. « {expression clé} – Service de transport avec chauffeur »).
-  - **loading="lazy"**
-  - **Présentation** : max-width 560px, centrée (`margin: 1em auto`), responsive (`width: 100%; height: auto`).
-- **Emplacement** : une seule insertion, après l’intro (avant la première section H2). Pas d’autre image dans le contenu.
+- **Une image par page** (URL selon département ou page). Alt et title avec expression clé ou synonymes. `loading="lazy"`, max-width 560px, centrée. Une seule insertion après l’intro.
 
 ## Scripts et API
 
-- **Paris** : génération `generate-vtc-content.js` (zones `vtc-paris-zones.js`). Publication `publish-vtc-paris-pages.js`, mise à jour `update-vtc-paris-pages.js`. Commandes : `npm run publish-vtc-pages`, `npm run update-vtc-pages`.
-- **Communes 77** : génération `generate-vtc-communes-content.js` (données `vtc-seine-et-marne-villes-a.js` à `vtc-seine-et-marne-villes-y.js`). Publication `publish-vtc-communes-pages.js`, mise à jour `update-vtc-communes-pages.js`. Commandes : `npm run publish-vtc-communes`, `npm run update-vtc-communes`.
-- **Communes 78 (Yvelines)** : génération `generate-vtc-yvelines-content.js` (données `vtc-yvelines-villes-a.js`, `vtc-yvelines-villes-b.js`, …). Publication `publish-vtc-yvelines-pages.js`, mise à jour `update-vtc-yvelines-pages.js`. Commandes : `npm run publish-vtc-yvelines`, `npm run update-vtc-yvelines`.
-- **API** : `wordpress-api.js` — création/mise à jour sous parent `nos-secteurs`, envoi Yoast (`_yoast_wpseo_focuskw`, `_yoast_wpseo_metadesc`).
+- **API** : `wordpress-api.js` — création/mise à jour sous parent `nos-secteurs`, envoi Yoast (`_yoast_wpseo_focuskw`, `_yoast_wpseo_metadesc`, `_yoast_wpseo_title` pour les pages qui le nécessitent). `getPageIdBySlugGlobal` pour les pages racine (ex. app mobile).
+- **Mise à jour en masse** : `npm run update-vtc-pages`, `update-vtc-essonne`, etc. Pour appliquer un nouveau contenu (ex. 2500 mots) sur toutes les pages existantes, lancer les scripts `update-*` correspondants.
 
 ## Bonnes pratiques
 
-- Échapper le HTML dans les attributs (alt, title) via `escapeHtml()` pour la clé.
-- Vérifier que la méta description est bien envoyée et affichée (éviter « Aucune méta-description spécifiée »).
-- Objectif : pages optimisées pour le référencement naturel (Google 2026), bonnes pratiques Yoast/RankMath, excellente lisibilité et UX, maximisation des conversions.
+- Échapper le HTML dans les attributs (alt, title) via `escapeHtml()`.
+- Objectif : pages optimisées pour le référencement naturel, bonnes pratiques Yoast, lisibilité et UX, maximisation des conversions.

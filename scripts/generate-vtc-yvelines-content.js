@@ -1,8 +1,9 @@
 /**
  * Générateur de contenu SEO pour les pages VTC des communes des Yvelines (78).
- * Mêmes règles que 77 : expression clé, méta 140–156, une image, H2/H3, tournures naturelles, intro personnalisée.
+ * Mêmes règles : expression clé, méta 140–156, une image, H2/H3, 2500 mots min, tournures naturelles, intro personnalisée.
  */
 
+import { getSectionVtcVsTaxi, getSectionConseilsReservation, getSectionCouverture, getSectionQuandReserver, getSectionTrajetsPro, getFaqExtraItems } from "./_content-blocks-long.js";
 import { VTC_YVELINES_VILLES_A } from "./vtc-yvelines-villes-a.js";
 import { VTC_YVELINES_VILLES_B } from "./vtc-yvelines-villes-b.js";
 import { VTC_YVELINES_VILLES_F } from "./vtc-yvelines-villes-f.js";
@@ -53,7 +54,7 @@ function escapeHtml(s) {
 }
 
 function focusKeyphrase(commune) {
-  return `VTC ${commune.name}`;
+  return `Chauffeur privé VTC ${commune.name}`;
 }
 
 function seoTitle(commune) {
@@ -127,23 +128,33 @@ function generateContent(commune) {
   const extCDG = "https://www.parisaeroport.fr";
 
   const intro = `
-<p><strong>${kw}</strong> : vous cherchez un chauffeur privé fiable et disponible à toute heure&nbsp;? Nous vous accompagnons ${loc} et dans le canton de ${district} pour vos déplacements professionnels, transferts aéroport ou gare, et trajets en Île-de-France. Que vous partiez ${zoneIntro}, notre flotte et nos chauffeurs garantissent ponctualité et confort. Par ailleurs, nous nous adaptons à vos horaires et à votre destination, avec une réservation simple et des tarifs transparents.</p>
-<p>Le service est opérationnel 24h/24 et 7j/7, avec un suivi en temps réel pour chaque course. Nous mettons tout en œuvre pour un trajet serein, que ce soit vers l'aéroport Charles de Gaulle, Orly, les ${gares} ou tout autre point. Côté prix, tout est indiqué à l'avance : ainsi, vous pouvez réserver en toute confiance.</p>
+<p><strong>${kw}</strong> : vous cherchez un chauffeur privé fiable et disponible à toute heure&nbsp;? Nous vous accompagnons ${loc} et dans le canton de ${district} pour vos déplacements professionnels, transferts aéroport ou gare, et trajets en Île-de-France. Que vous partiez ${zoneIntro}, notre flotte et nos chauffeurs garantissent ponctualité et confort. Par ailleurs, nous nous adaptons à vos horaires et à votre destination, avec une réservation simple et des tarifs transparents. En optant pour un VTC ou un chauffeur privé plutôt qu'un taxi classique, vous connaissez le tarif à l'avance et réservez à la date et à l'heure qui vous conviennent.</p>
+<p>Le service est opérationnel 24h/24 et 7j/7, avec un suivi en temps réel pour chaque course. Nous mettons tout en œuvre pour un trajet serein, que ce soit vers l'aéroport Charles de Gaulle, Orly, les ${gares} ou tout autre point. Côté prix, tout est indiqué à l'avance : ainsi, vous pouvez réserver en toute confiance. Que vous ayez besoin d'un transfert tôt le matin, en soirée ou en pleine nuit, notre équipe est à votre disposition.</p>
 `;
 
   const IMAGE_URL = "https://monchauffeurvipv3.netopsia.eu/wp-content/uploads/2026/02/vtc-essonne.webp";
   const imgBlock = `<figure class="wp-block-image" style="max-width: 560px; margin: 1em auto;"><img src="${IMAGE_URL}" alt="${escapeHtml(kw)} – Chauffeur privé et véhicule confortable" title="${escapeHtml(kw)} – Service de transport avec chauffeur" loading="lazy" style="width: 100%; height: auto; display: block;" /></figure>`;
 
+  const sectionAlternativeTaxi = `
+<h2>Alternative taxi à ${locCourt}${cp}</h2>
+<p>Vous cherchez une <strong>alternative taxi</strong> à ${locCourt}${cp}&nbsp;? Notre service <strong>${kw}</strong> vous permet de réserver à l'avance, de suivre l'arrivée du chauffeur et de connaître le tarif avant la course. Ainsi, vous combinez la simplicité d'un taxi et le confort d'un chauffeur privé. Contrairement à un taxi pris sur le pas de la porte, le VTC se réserve à l'avance : vous choisissez l'heure et le lieu de prise en charge, et le prix affiché ne varie pas sauf modification du trajet. De plus, vous bénéficiez d'un suivi en temps réel et d'un véhicule dédié, souvent plus confortable qu'un taxi pour les trajets longs ou professionnels.</p>
+`;
+
   const sectionService = `
 <h2>Service ${kw}</h2>
-<p>Notre offre de transport avec chauffeur privé à ${locCourt}${cp} et dans le secteur de ${district} s'adresse aux particuliers comme aux professionnels. En effet, chaque course est assurée par un chauffeur expérimenté, formé aux bonnes pratiques du service VTC ; les véhicules sont régulièrement entretenus et climatisés pour un trajet confortable. Vous voyagez ainsi dans les meilleures conditions.</p>
+<p>Notre offre de transport avec chauffeur privé à ${locCourt}${cp} et dans le secteur de ${district} s'adresse aux particuliers comme aux professionnels. En effet, chaque course est assurée par un chauffeur expérimenté, formé aux bonnes pratiques du service VTC ; les véhicules sont régulièrement entretenus et climatisés pour un trajet confortable. C'est aussi une option pertinente en complément d'un taxi, notamment si vous souhaitez réserver à l'avance. Vous voyagez ainsi dans les meilleures conditions.</p>
 
 <h3>Ponctualité et couverture de la zone</h3>
 <p>La ponctualité est au cœur de notre engagement : nous suivons le trafic en temps réel et adaptons les itinéraires pour respecter vos horaires, notamment pour les transferts aéroports ou gares. Que vous habitiez ou travailliez à ${locCourt}, dans le canton de ${district} ou aux environs, nous nous déplaçons à votre adresse. De plus, nous couvrons aussi les communes voisines.</p>
 
 <h3>Réservation et tarification</h3>
-<p>Vous réservez en ligne en quelques clics, recevez une confirmation immédiate et pouvez joindre directement votre chauffeur le jour du trajet. Côté tarif, pas de mauvaise surprise : le prix est indiqué à l'avance et un devis clair vous est envoyé avant toute validation, pour que vous puissiez réserver en toute transparence.</p>
+<p>Vous réservez en ligne en quelques clics, recevez une confirmation immédiate et pouvez joindre directement votre chauffeur le jour du trajet. Côté tarif, pas de mauvaise surprise : le prix est indiqué à l'avance et un devis clair vous est envoyé avant toute validation, pour que vous puissiez réserver en toute transparence. Que vous préfériez un VTC, un chauffeur privé ou une alternative au taxi pour vos déplacements à ${locCourt}, la même qualité de service s'applique.</p>
 `;
+
+  const sectionVtcVsTaxi = getSectionVtcVsTaxi({ locCourt, cp, gares, kw });
+  const sectionConseilsReservation = getSectionConseilsReservation({ locCourt, district, gares, kw });
+  const sectionCouverture = getSectionCouverture({ locCourt, cp, district, gares, kw, departmentName: "Yvelines" });
+  const sectionQuandReserver = getSectionQuandReserver({ locCourt, cp, kw, departmentName: "Yvelines" });
 
   const sectionPourquoi = `
 <h2>Pourquoi choisir notre ${kw}</h2>
@@ -179,6 +190,7 @@ function generateContent(commune) {
 <h3>Transfert vers la Gare du Nord</h3>
 <p>La Gare du Nord est un point de passage obligé pour de nombreux déplacements (TGV, Eurostar). Un chauffeur privé jusqu'à la Gare du Nord vous garantit une arrivée à l'heure, sans vous soucier du stationnement. Par ailleurs, nous proposons des véhicules adaptés aux bagages.</p>
 <p>Découvrez notre <a href="${linkGareNord}">service VTC Gare du Nord</a> et réservez votre transfert en avance. Nous assurons aussi les départs tôt le matin pour les premiers trains.</p>
+${getSectionTrajetsPro({ locCourt, cp, kw })}
 `;
 
   const sectionDeplacements = `
@@ -216,11 +228,12 @@ function generateContent(commune) {
 `;
 
   const faqItems = [
-    { q: `Quel est le prix d'un ${kw} ?`, a: `Le tarif dépend du trajet (distance, durée) et du type de véhicule. Nous appliquons des tarifs transparents : le prix est indiqué à la réservation et ne change pas sauf modification de la course. Par ailleurs, les transferts vers les aéroports et les gares sont proposés à prix fixe sur devis.` },
+    { q: `Quel est le prix d'un ${kw} ?`, a: `Le tarif dépend du trajet (distance, durée) et du type de véhicule. Nous appliquons des tarifs transparents : le prix est indiqué à la réservation et ne change pas sauf modification de la course. Par ailleurs, les transferts vers les aéroports et les gares sont proposés à prix fixe sur devis. Vous évitez ainsi les surprises que l'on peut avoir avec un taxi en heure de pointe.` },
     { q: `Peut-on réserver un ${kw} à l'avance ?`, a: `Oui. Vous pouvez réserver plusieurs jours ou semaines à l'avance. La réservation en ligne est disponible 24h/24 et vous recevez une confirmation immédiate. Pour les transferts aéroport et les jours fériés, nous conseillons toutefois de réserver à l'avance.` },
     { q: `Les chauffeurs sont-ils disponibles 24h/24 ?`, a: `Oui. Notre service est disponible 24h/24 et 7j/7. Ainsi, que vous ayez un vol tôt le matin ou un train en soirée, nous pouvons organiser votre prise en charge. Réservez en ligne ou par téléphone à tout moment.` },
     { q: `Faites-vous les transferts vers les aéroports ?`, a: `Oui. Nous assurons les transferts vers l'aéroport Paris-Charles de Gaulle (Roissy) et l'aéroport d'Orly : prise en charge à votre adresse, aide aux bagages et trajet direct jusqu'au terminal. D'ailleurs, ce service est idéal pour éviter le stress et les retards.` },
     { q: `Quels véhicules sont disponibles pour un ${kw} ?`, a: `Nous proposons des berlines et VTC confortables, climatisés et adaptés à la ville et aux trajets aéroport. De même, selon vos besoins (nombre de passagers, bagages), nous pouvons vous orienter vers le véhicule le plus adapté. Tous nos véhicules sont récents et entretenus.` },
+    ...getFaqExtraItems({ kw, locCourt }),
   ];
 
   const sectionFaq = `
@@ -239,13 +252,17 @@ function generateContent(commune) {
 <p><strong>${escapeHtml(faqItems[3].q)}</strong></p>
 <p>${faqItems[3].a}</p>
 
-<h3>Véhicules</h3>
+<h3>Véhicules et service</h3>
 <p><strong>${escapeHtml(faqItems[4].q)}</strong></p>
 <p>${faqItems[4].a}</p>
+<p><strong>${escapeHtml(faqItems[5].q)}</strong></p>
+<p>${faqItems[5].a}</p>
+<p><strong>${escapeHtml(faqItems[6].q)}</strong></p>
+<p>${faqItems[6].a}</p>
 `;
 
   const conclusion = `
-<p>Que vous habitiez ou travailliez ${loc}, notre service <strong>${kw}</strong> est à votre disposition pour tous vos déplacements : transferts aéroports (Charles de Gaulle, Orly), transferts gare (Gare du Nord, Gare de Lyon…), courses en ville ou trajets longue distance. En résumé, chauffeurs professionnels, véhicules confortables, tarifs transparents et réservation simple : nous mettons tout en œuvre pour votre sérénité. Par conséquent, contactez votre chauffeur privé et réservez en quelques clics ; nous restons à votre écoute pour toute demande.</p>
+<p>Que vous habitiez ou travailliez ${loc}, notre service <strong>${kw}</strong> est à votre disposition pour tous vos déplacements : transferts aéroports (Charles de Gaulle, Orly), transferts gare (Gare du Nord, Gare de Lyon…), courses en ville ou trajets longue distance. En résumé, chauffeurs professionnels, véhicules confortables, tarifs transparents et réservation simple : nous mettons tout en œuvre pour votre sérénité. Que vous préfériez un VTC, un chauffeur privé ou une alternative au taxi à ${locCourt}${cp}, la même qualité de service s'applique. Par conséquent, contactez votre chauffeur privé et réservez en quelques clics ; nous restons à votre écoute pour toute demande.</p>
 `;
 
   const otherLinks = others.map((c) => `<a href="${SITE_SLUG_BASE}/${c.slug}/">VTC ${c.name}</a>`).join(", ");
@@ -261,12 +278,17 @@ function generateContent(commune) {
     `<h1>${kw}</h1>`,
     intro.trim(),
     imgBlock,
+    sectionAlternativeTaxi.trim(),
     sectionService.trim(),
+    sectionVtcVsTaxi,
     sectionPourquoi.trim(),
     sectionTrajets.trim(),
     internalLinksBlock.trim(),
     sectionDeplacements.trim(),
     sectionReserver.trim(),
+    sectionConseilsReservation,
+    sectionCouverture,
+    sectionQuandReserver,
     sectionFaq.trim(),
     conclusion.trim(),
     externalLinksBlock.trim(),

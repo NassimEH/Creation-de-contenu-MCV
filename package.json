@@ -23,8 +23,13 @@
     "update-vtc-val-doise": "node scripts/update-vtc-val-doise-pages.js",
     "publish-vtc-gares-paris": "node scripts/publish-vtc-gares-paris-pages.js",
     "update-vtc-gares-paris": "node scripts/update-vtc-gares-paris-pages.js",
+    "publish-vtc-aeroports": "node scripts/publish-vtc-aeroports-pages.js",
+    "update-vtc-aeroports": "node scripts/update-vtc-aeroports-pages.js",
+    "publish-vtc-metropoles": "node scripts/publish-vtc-metropoles-pages.js",
+    "update-vtc-metropoles": "node scripts/update-vtc-metropoles-pages.js",
     "update-nos-secteurs": "node scripts/update-nos-secteurs-page.js",
-    "update-app-mobile": "node scripts/update-app-mobile-page.js"
+    "update-app-mobile": "node scripts/update-app-mobile-page.js",
+    "update-faq": "node scripts/update-faq-page.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1"
