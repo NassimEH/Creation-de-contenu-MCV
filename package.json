@@ -29,7 +29,8 @@
     "update-vtc-metropoles": "node scripts/update-vtc-metropoles-pages.js",
     "update-nos-secteurs": "node scripts/update-nos-secteurs-page.js",
     "update-app-mobile": "node scripts/update-app-mobile-page.js",
-    "update-faq": "node scripts/update-faq-page.js"
+    "update-faq": "node scripts/update-faq-page.js",
+    "publish-hub-pages": "node scripts/publish-hub-pages.js"
   },
   "dependencies": {
     "dotenv": "^16.3.1"

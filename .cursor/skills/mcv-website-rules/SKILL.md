@@ -42,6 +42,7 @@ description: Règles et conventions du projet MCVWebsite (publication SEO VTC su
 - **Gares Paris** : 7 gares SNCF (Nord, Est, Saint-Lazare, Lyon, Austerlitz, Montparnasse, Bercy). Données dans `vtc-gares-paris-data.js`, contenu dans `generate-vtc-gares-paris-content.js`.
 - **Métropoles** : Lyon, Marseille, Toulouse, Bordeaux, Lille, Nice, Nantes, Strasbourg, Montpellier, Rennes, Grenoble. Données dans `vtc-metropoles-data.js`, contenu dans `generate-vtc-metropoles-content.js` (2500+ mots, SEO, alternative taxi). Slugs : `vtc-lyon`, `vtc-marseille`, etc. Publication : `publish-vtc-metropoles-pages.js`, mise à jour : `update-vtc-metropoles-pages.js`.
 - **Pages spéciales** : « Nos secteurs » (parente), « App mobile » (slug `application-vtc-mobile`). Contenu dans `generate-nos-secteurs-page-content.js` et `generate-app-mobile-page-content.js`.
+- **Pages hub** (maillage interne et mots-clés) : « Chauffeur privé aéroport » (slug `chauffeur-prive-aeroport`), « Chauffeur privé gares » (`chauffeur-prive-gares`), « Chauffeur privé Île-de-France » (`chauffeur-prive-ile-de-france`). Contenu dans `generate-hub-aeroport-content.js`, `generate-hub-gares-content.js`, `generate-hub-ile-de-france-content.js`. Publication et mise à jour : `publish-hub-pages.js` (crée si absent, met à jour sinon).
 - Chaque page **unique**, références locales (quartiers/canton, monuments, secteur).
 
 ## Expression clé et densité
