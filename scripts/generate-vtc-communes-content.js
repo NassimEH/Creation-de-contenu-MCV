@@ -4,6 +4,13 @@
  */
 
 import { getSectionVtcVsTaxi, getSectionConseilsReservation, getSectionCouverture, getSectionQuandReserver, getSectionTrajetsPro, getFaqExtraItems } from "./_content-blocks-long.js";
+import { getFontainebleauPageData } from "./generate-vtc-fontainebleau-content.js";
+import { getSenartPageData } from "./generate-vtc-senart-content.js";
+import { getMoissyCramayelPageData } from "./generate-vtc-moissy-cramayel-content.js";
+import { getLieusaintPageData } from "./generate-vtc-lieusaint-content.js";
+import { getSavignyLeTemplePageData } from "./generate-vtc-savigny-le-temple-content.js";
+import { getCombsLaVillePageData } from "./generate-vtc-combs-la-ville-content.js";
+import { getMelunPageData } from "./generate-vtc-melun-content.js";
 import { VTC_SEINE_ET_MARNE_VILLES_A } from "./vtc-seine-et-marne-villes-a.js";
 import { VTC_SEINE_ET_MARNE_VILLES_B } from "./vtc-seine-et-marne-villes-b.js";
 import { VTC_SEINE_ET_MARNE_VILLES_C } from "./vtc-seine-et-marne-villes-c.js";
@@ -51,6 +58,17 @@ const ALL_COMMUNES = [
   ...VTC_SEINE_ET_MARNE_VILLES_V,
   ...VTC_SEINE_ET_MARNE_VILLES_Y,
 ];
+
+/** Page supplémentaire : Sénart (agglomération, pas une commune). */
+const SENART_ENTRY = {
+  name: "Sénart",
+  slug: "vtc-senart",
+  cp: "77240",
+  canton: "Savigny-le-Temple",
+  interco: "CA Grand Paris Sud Seine Essonne Sénart",
+  population: 1,
+};
+const ALL_PAGES_77 = [...ALL_COMMUNES, SENART_ENTRY];
 
 const SITE_SLUG_BASE = "/nos-secteurs";
 
@@ -308,6 +326,27 @@ ${getSectionTrajetsPro({ locCourt, cp, kw })}
 }
 
 export function getPageData(commune) {
+  if (commune.name === "Fontainebleau") {
+    return getFontainebleauPageData();
+  }
+  if (commune.name === "Sénart" || commune.slug === "vtc-senart") {
+    return getSenartPageData();
+  }
+  if (commune.name === "Moissy-Cramayel" || commune.slug === "vtc-moissy-cramayel") {
+    return getMoissyCramayelPageData();
+  }
+  if (commune.name === "Lieusaint" || commune.slug === "vtc-lieusaint") {
+    return getLieusaintPageData();
+  }
+  if (commune.name === "Savigny-le-Temple" || commune.slug === "vtc-savigny-le-temple") {
+    return getSavignyLeTemplePageData();
+  }
+  if (commune.name === "Combs-la-Ville" || commune.slug === "vtc-combs-la-ville") {
+    return getCombsLaVillePageData();
+  }
+  if (commune.name === "Melun" || commune.slug === "vtc-melun") {
+    return getMelunPageData();
+  }
   return {
     focusKeyphrase: focusKeyphrase(commune),
     seoTitle: seoTitle(commune),
@@ -318,7 +357,7 @@ export function getPageData(commune) {
 }
 
 export function getAllPagesData() {
-  return ALL_COMMUNES.map((commune) => ({
+  return ALL_PAGES_77.map((commune) => ({
     commune,
     ...getPageData(commune),
   }));
